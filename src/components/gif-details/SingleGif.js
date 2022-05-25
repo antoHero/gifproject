@@ -1,38 +1,40 @@
 import React from 'react';
-import moment from "moment";
-const SingleGif = ({ gif }) => {
+// import PropTypes from 'prop-types';
+import moment from 'moment';
 
-	return (
-		<>
-			<div className="mx-auto overflow-hidden px-8 py-8">
-		        <div className="flex mt-8 py-12 flex-col-reverse lg:flex-row w-full bg-white shadow rounded">
-		        	<div className="w-full lg:w-1/2">
-		            	<div className="pt-4 lg:pt-6 pb-4 lg:pb-6 pl-4 lg:pl-6 pr-4 lg:pr-6">
-		              		<div className="flex justify-between items-center lg:items-start flex-row-reverse lg:flex-col">
-		                		<h4 className="text-base text-indigo-700 dark:text-indigo-600 tracking-normal leading-4">Posted at: {moment(gif.import_datetime).format("LTS")}</h4>
-		                		<h4 className="lg:mt-3 text-gray-600 dark:text-gray-400 text-base font-normal">Posted on: {moment(gif.import_datetime).format("MMM Do YYYY")}</h4>
-		              		</div>
-		              
-		              		<h2 className="text-gray-800 mt-4 mb-2 tracking-normal text-xl lg:text-2xl font-bold">{gif.title}</h2>
-		                        
-		              		<div className="flex lg:items-center items-start flex-col lg:flex-row">
-		                		<div className="flex items-center">
-		                  			<div className="border-2 border-white dark:border-gray-700 shadow rounded-full w-6 h-6">
-		                    			<img className="w-full h-full overflow-hidden object-cover rounded-full" src="{gif.user.profile_url}" alt="avatar" />
-		                  			</div>
-		                  			<p className="text-gray-600 text-xs font-normal ml-1">{gif.user?.display_name}</p>
-		                		</div>
-		              		</div>
-		            	</div>
-		          	</div>
-		          	<div className="relative w-full h-full lg:h-auto lg:w-1/2 rounded-t lg:rounded-t-none lg:rounded-r inline-block">
-		            	<img className="w-full h-full absolute inset-0 object-cover rounded-t lg:rounded-r lg:rounded-t-none" src={gif.images?.fixed_height.url} alt={gif.user?.username} />
-		          	</div>
-		        </div>
-		     </div>
-		</>
-	)
-
-}
+const SingleGif = ({ gif }) => (
+  <>
+    <div className="dark:bg-gray-300 mt-10">
+      <div className="mx-auto container w-full flex items-center md:flex-row flex-col justify-between px-6 lg:px-0">
+        <div className="flex flex-col justify-start items-start lg:w-2/5 px-2 lg:px-0">
+          <div className="md:mt-3">
+            <p className="text-white dark:text-white lg:text-4xl text-3xl font-extrabold leading-9">{gif.title}</p>
+          </div>
+          <div className="grid grid-cols-2 mt-8 gap-y-6">
+            <div>
+              <p className="text-white dark:text-white text-sm lg:text-base font-medium leading-none">
+                Author:
+                {' '}
+                <span className="font-semibold md:font-medium">{gif.user?.display_name}</span>
+              </p>
+            </div>
+            <div>
+              <p className="text-white dark:text-white text-sm lg:text-base font-medium leading-none">
+                Date Posted:
+                {' '}
+                <span className="font-semibold md:font-medium">
+                  {moment(gif.import_datetime).format('LTS')}
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-center items-center lg:w-2/5 mt-10 md:mt-0">
+          <img className="w-full" src={gif.images?.fixed_height.url} alt={gif.user?.username} />
+        </div>
+      </div>
+    </div>
+  </>
+);
 
 export default SingleGif;

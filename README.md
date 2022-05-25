@@ -10,6 +10,16 @@ This is a simple .gif search app based on the Giphy API
 - onclick of any of the gif, it should go to another page showing the details of the gif
 - write unit tests for the search field and the results list
 
+## Screenshots
+
+Image from trending API
+
+![screenshot](./src/assets/img/trending.png)
+
+Image from search API
+
+![screenshot](./src/assets/img/search.png)
+
 ## This project was built With
 
 - JavaScript(React)
